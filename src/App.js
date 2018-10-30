@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import Input from "./components/Input";
 
 class App extends Component {
   state = {
@@ -19,35 +20,48 @@ class App extends Component {
     console.log("from e", e.target.name);
 
     this.setState({
-      [e.target.name]: e.target.value.toLowerCase()
+      [e.target.name]: e.target.value
     });
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    const users = this.state.users;
-
-    users.push({
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      userName: this.state.userName,
-      email: this.state.email,
-      password: this.state.password,
-      phone: this.state.phone,
-      bio: this.state.bio
-    });
+    const users = [
+      ...this.state.users,
+      {
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        userName: this.state.userName,
+        email: this.state.email,
+        password: this.state.password,
+        phone: this.state.phone,
+        bio: this.state.bio
+      }
+    ];
 
     this.setState({
       users
     });
 
+    console.log("users", this.state.users);
   };
 
   render() {
+    let {
+      firstName,
+      lastName,
+      userName,
+      email,
+      password,
+      phone,
+      bio
+    } = this.state;
+
     return (
       <div className="container">
-        <form onSubmit={this.handleSumbit} className="signUpForm">
-          <div className="FormField">
+        <form onSubmit={this.handleSubmit} className="signUpForm">
+          <Input />
+          <div className="FormFieldwrapper">
             <div className="FormField">
               <label htmlFor="firstname">First Name</label>
               <input
@@ -56,8 +70,8 @@ class App extends Component {
                 name="firstName"
                 placeholder="First name"
                 className="FormInput"
-                value={this.state.firstName}
-                onChange={e => this.handleInputs(e)}
+                value={firstName}
+                onChange={this.handleInputs}
               />
               <p>
                 First name must be alphanumeric and contain 3 - 16 characters
@@ -71,8 +85,8 @@ class App extends Component {
                 name="lastName"
                 placeholder="Last name"
                 className="FormInput"
-                value={this.state.lastName}
-                onChange={e => this.handleInputs(e)}
+                value={lastName}
+                onChange={this.handleInputs}
               />
               <p>
                 Last name must be alphanumeric and contain 3 - 16 characters
@@ -86,8 +100,8 @@ class App extends Component {
                 name="userName"
                 placeholder="User name"
                 className="FormInput"
-                value={this.state.userName}
-                onChange={e => this.handleInputs(e)}
+                value={userName}
+                onChange={this.handleInputs}
               />
               <p>
                 User name must be alphanumeric and contain 3 - 16 characters
@@ -101,8 +115,8 @@ class App extends Component {
                 name="email"
                 placeholder="Email"
                 className="FormInput"
-                value={this.state.email}
-                onChange={e => this.handleInputs(e)}
+                value={email}
+                onChange={this.handleInputs}
               />
               <p>Email must be a valid address, e.g. example@example.com</p>
             </div>
@@ -113,8 +127,8 @@ class App extends Component {
                 name="password"
                 placeholder="password"
                 className="FormInput"
-                value={this.state.password}
-                onChange={e => this.handleInputs(e)}
+                value={password}
+                onChange={this.handleInputs}
               />
               <p>
                 Password must be alphanumeric (@, _ and - are also allowed) and
@@ -128,8 +142,8 @@ class App extends Component {
                 name="phone"
                 placeholder="telephone"
                 className="FormInput"
-                value={this.state.phone}
-                onChange={e => this.handleInputs(e)}
+                value={phone}
+                onChange={this.handleInputs}
               />
               <p>A valid Telephone number (11 digits)</p>
             </div>
@@ -140,16 +154,15 @@ class App extends Component {
                 name="bio"
                 placeholder="Bio"
                 className="FormInput"
-                value={this.state.bio}
-                onChange={e => this.handleInputs(e)}
+                value={bio}
+                onChange={this.handleInputs}
               />
               <p>
                 Bio must contain only lowercase letters, numbers and hyphens and
                 be 8 - 50 characters
               </p>
             </div>
-            <button type="submit">Submit</button>
-            <h2> {this.state.users}</h2>
+            <button>Submit</button>
           </div>
         </form>
       </div>
