@@ -1,16 +1,15 @@
 .InputDiv{
   width: 100%;
-  padding: 2rem;
+  padding: 0.5rem;
 }
 
 .LabelStyle {
   font-weight : bold;
-  display: block;
   margin-bottom : 2rem;
+  margin-right : 1rem;
 }
 
 .InputElement{
-  outline: none;
   border: 1px solid #ccc;
   background-color: #ffffee;
   font: Arial;
@@ -20,6 +19,5 @@
 }
 
 .InputElement:focus{
-  outline: none;
   background-color : #ccc;
 }

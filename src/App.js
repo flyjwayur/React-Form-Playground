@@ -12,8 +12,10 @@ class App extends Component {
     phone: "",
     bio: "",
     users: [],
-    status: "signUp"
+    status: "signUp",
   };
+
+  inputelement = React.createRef()
 
   handleInputs = e => {
     console.log("from e", e.target.value);
@@ -43,8 +45,15 @@ class App extends Component {
       users
     });
 
-    console.log("users", this.state.users);
   };
+
+  handleFocus = () => {
+    this.inputelement.current.focus();
+  }
+
+  componentDidUpdate = () => {
+    console.log("users", this.state.users);
+  }
 
   render() {
     let {
@@ -58,112 +67,86 @@ class App extends Component {
     } = this.state;
 
     return (
-      <div className="container">
+      <div className="FormFieldwrapper">
         <form onSubmit={this.handleSubmit} className="signUpForm">
-          <Input />
-          <div className="FormFieldwrapper">
-            <div className="FormField">
-              <label htmlFor="firstname">First Name</label>
-              <input
-                id="firstname"
-                type="text"
-                name="firstName"
-                placeholder="First name"
-                className="FormInput"
-                value={firstName}
-                onChange={this.handleInputs}
-              />
-              <p>
-                First name must be alphanumeric and contain 3 - 16 characters
-              </p>
-            </div>
-            <div className="FormField">
-              <label htmlFor="lastname">Last Name</label>
-              <input
-                id="lastname"
-                type="text"
-                name="lastName"
-                placeholder="Last name"
-                className="FormInput"
-                value={lastName}
-                onChange={this.handleInputs}
-              />
-              <p>
-                Last name must be alphanumeric and contain 3 - 16 characters
-              </p>
-            </div>
-            <div className="FormField">
-              <label htmlFor="username">User Name</label>
-              <input
-                id="username"
-                type="text"
-                name="userName"
-                placeholder="User name"
-                className="FormInput"
-                value={userName}
-                onChange={this.handleInputs}
-              />
-              <p>
-                User name must be alphanumeric and contain 3 - 16 characters
-              </p>
-            </div>
-            <div className="FormField">
-              <label htmlFor="email">Email</label>
-              <input
-                id="email"
-                type="text"
-                name="email"
-                placeholder="Email"
-                className="FormInput"
-                value={email}
-                onChange={this.handleInputs}
-              />
-              <p>Email must be a valid address, e.g. example@example.com</p>
-            </div>
-            <div className="FormField">
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                name="password"
-                placeholder="password"
-                className="FormInput"
-                value={password}
-                onChange={this.handleInputs}
-              />
-              <p>
-                Password must be alphanumeric (@, _ and - are also allowed) and
-                between 6 - 20 characters
-              </p>
-            </div>
-            <div className="FormField">
-              <label htmlFor="phone">phone</label>
-              <input
-                type="tel"
-                name="phone"
-                placeholder="telephone"
-                className="FormInput"
-                value={phone}
-                onChange={this.handleInputs}
-              />
-              <p>A valid Telephone number (11 digits)</p>
-            </div>
-            <div className="FormField">
-              <label htmlFor="htmlFor">Bio</label>
-              <input
-                type="text"
-                name="bio"
-                placeholder="Bio"
-                className="FormInput"
-                value={bio}
-                onChange={this.handleInputs}
-              />
-              <p>
-                Bio must contain only lowercase letters, numbers and hyphens and
-                be 8 - 50 characters
-              </p>
-            </div>
-            <button>Submit</button>
-          </div>
+        <button onClick={this.handleFocus}>Sign Up</button>
+          <Input
+            inputelement = {this.inputelement}
+            labelname="First Name"
+            id="firstname"
+            type="text"
+            name="firstName"
+            placeholder="First name"
+            className="FormInput"
+            value={firstName}
+            onChange={this.handleInputs}
+            typehint="First name must be alphanumeric and contain 3 - 16 characters"
+          />
+          <Input
+            labelname="Last Name"
+            id="lastname"
+            type="text"
+            name="lastName"
+            placeholder="Last name"
+            className="FormInput"
+            value={lastName}
+            onChange={this.handleInputs}
+            typehint="Last name must be alphanumeric and contain 3 - 16 characters"
+          />
+          <Input
+            labelname="User Name"
+            id="username"
+            type="text"
+            name="userName"
+            placeholder="User name"
+            className="FormInput"
+            value={userName}
+            onChange={this.handleInputs}
+            typehint=" User name must be alphanumeric and contain 3 - 16 characters"
+          />
+          <Input
+            labelname="Email"
+            id="email"
+            type="text"
+            name="email"
+            placeholder="Email"
+            className="FormInput"
+            value={email}
+            onChange={this.handleInputs}
+            typehint="Email must be a valid address, e.g. example@example.com"
+          />
+          <Input
+            labelname="Password"
+            type="password"
+            name="password"
+            placeholder="password"
+            className="FormInput"
+            value={password}
+            onChange={this.handleInputs}
+            typehint="Password must be alphanumeric (@, _ and - are also allowed) and
+                    between 6 - 20 characters"
+          />
+          <Input
+            labelname="Phone"
+            type="tel"
+            name="phone"
+            placeholder="telephone"
+            className="FormInput"
+            value={phone}
+            onChange={this.handleInputs}
+            typehint="A valid Telephone number (11 digits)"
+          />
+          <Input
+            labelname="Bio"
+            type="text"
+            name="bio"
+            placeholder="Bio"
+            className="FormInput"
+            value={bio}
+            onChange={this.handleInputs}
+            typehint="Bio must contain only lowercase letters, numbers and hyphens and be 8 - 50 characters"
+          />
+          <button>Submit</button>
         </form>
       </div>
     );
