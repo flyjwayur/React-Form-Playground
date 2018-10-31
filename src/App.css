@@ -1,4 +1,9 @@
 .FormFieldwrapper{
-  width: 50%;
-  margin: 0 auto;
+  width: 45%;
+  margin: 6rem auto;
+  border: 1px solid #eee;
+  border-radius : 8px;
+  box-shadow : 0 2px 3px #ccc;
+  padding : 2rem;
+  background-color : #eefeee;
 }
