@@ -19,5 +19,6 @@
 }
 
 .InputElement:focus{
+  outline : 1px solid orange;
   background-color : #ccc;
 }

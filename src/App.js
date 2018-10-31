@@ -77,7 +77,6 @@ class App extends Component {
             type="text"
             name="firstName"
             placeholder="First name"
-            className="FormInput"
             value={firstName}
             onChange={this.handleInputs}
             typehint="First name must be alphanumeric and contain 3 - 16 characters"
@@ -88,7 +87,6 @@ class App extends Component {
             type="text"
             name="lastName"
             placeholder="Last name"
-            className="FormInput"
             value={lastName}
             onChange={this.handleInputs}
             typehint="Last name must be alphanumeric and contain 3 - 16 characters"
@@ -99,7 +97,6 @@ class App extends Component {
             type="text"
             name="userName"
             placeholder="User name"
-            className="FormInput"
             value={userName}
             onChange={this.handleInputs}
             typehint=" User name must be alphanumeric and contain 3 - 16 characters"
@@ -110,7 +107,6 @@ class App extends Component {
             type="text"
             name="email"
             placeholder="Email"
-            className="FormInput"
             value={email}
             onChange={this.handleInputs}
             typehint="Email must be a valid address, e.g. example@example.com"
@@ -120,7 +116,6 @@ class App extends Component {
             type="password"
             name="password"
             placeholder="password"
-            className="FormInput"
             value={password}
             onChange={this.handleInputs}
             typehint="Password must be alphanumeric (@, _ and - are also allowed) and
@@ -131,7 +126,6 @@ class App extends Component {
             type="tel"
             name="phone"
             placeholder="telephone"
-            className="FormInput"
             value={phone}
             onChange={this.handleInputs}
             typehint="A valid Telephone number (11 digits)"
@@ -141,7 +135,6 @@ class App extends Component {
             type="text"
             name="bio"
             placeholder="Bio"
-            className="FormInput"
             value={bio}
             onChange={this.handleInputs}
             typehint="Bio must contain only lowercase letters, numbers and hyphens and be 8 - 50 characters"

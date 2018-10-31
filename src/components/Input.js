@@ -5,10 +5,10 @@ const Input = (props) => {
 
     return (
       <div className={classes.InputDiv}>
-        <label className={classes.LabelStyle}>{this.props.labelname}</label>
-        <input className={classes.InputElement}  ref={this.props.inputelement} {...this.props}/>
+        <label className={classes.LabelStyle}>{props.labelname}</label>
+        <input className={classes.InputElement}  ref={props.inputelement} {...props}/>
         <p>
-          {this.props.typeHint}
+          {props.typeHint}
         </p>
       </div>
     )
