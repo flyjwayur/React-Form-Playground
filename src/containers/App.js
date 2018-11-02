@@ -24,29 +24,29 @@ class App extends Component {
     console.log("from e", e.target.name);
 
     this.setState({
-      [e.target.name]: e.target.value
+      userInfo: {
+        ...this.state.userInfo,
+        [e.target.name]: e.target.value
+      } 
     });
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    const users = [
-      ...this.state.users,
-      {
-        firstName: this.state.userInfo.firstName,
-        lastName: this.state.userInfo.lastName,
-        userName: this.state.userInfo.userName,
-        email: this.state.userInfo.email,
-        password: this.state.userInfo.password,
-        phone: this.state.userInfo.phone,
-        bio: this.state.userInfo.bio
-      }
-    ];
 
     this.setState({
-      users
-    });
-
+      users : [
+        ...this.state.users,
+        {
+          firstName: this.state.userInfo.firstName,
+          lastName: this.state.userInfo.lastName,
+          userName: this.state.userInfo.userName,
+          email: this.state.userInfo.email,
+          password: this.state.userInfo.password,
+          phone: this.state.userInfo.phone,
+          bio: this.state.userInfo.bio
+        }
+      ]});
   };
 
   handleFocus = () => {
