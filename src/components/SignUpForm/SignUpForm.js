@@ -1,9 +1,39 @@
 import React from "react";
 import Input from "../Input/Input";
 
-const SignUpForm = (props) => {
+const SignUpForm = props => {
+  let {
+    regexValid,
+    firstName,
+    lastName,
+    userName,
+    email,
+    password,
+    phone,
+    handleInputs,
+    handleSubmit,
+    handleFocus,
+    inputFocus
+  } = props;
 
-  let { firstName, lastName, userName, email, password, phone, handleInputs, handleSubmit, handleFocus, inputFocus } = props;
+  const typingHints = {
+    firstName: "First name must be alphanumeric and contain 3 - 16 characters",
+    lastName: "Last name must be alphanumeric and contain 3 - 16 characters",
+    userName: "User name must be alphanumeric and contain 3 - 16 characters",
+    email: "Email must be a valid address, e.g. example@example.com",
+    password:
+      "Password must be alphanumeric (@, _ and - are also allowed) and between 6 - 20 characters",
+    phone: "A valid Telephone number (11 digits)"
+  };
+
+  const displayTypeHints = inputType => {
+    if (regexValid[inputType] === false) {
+      return typingHints[inputType];
+    }
+    return null;
+  };
+
+  displayTypeHints();
 
   return (
     <div className="FormFieldwrapper">
@@ -18,8 +48,8 @@ const SignUpForm = (props) => {
           placeholder="First name"
           value={firstName}
           onChange={handleInputs}
-          typehint="First name must be alphanumeric and contain 3 - 16 characters"
         />
+        <p>{displayTypeHints("firstName")}</p>
         <Input
           labelname="Last Name"
           id="lastname"
@@ -28,8 +58,8 @@ const SignUpForm = (props) => {
           placeholder="Last name"
           value={lastName}
           onChange={handleInputs}
-          typehint="Last name must be alphanumeric and contain 3 - 16 characters"
         />
+        <p>{displayTypeHints("lastName")}</p>
         <Input
           labelname="User Name"
           id="username"
@@ -38,8 +68,8 @@ const SignUpForm = (props) => {
           placeholder="User name"
           value={userName}
           onChange={handleInputs}
-          typehint=" User name must be alphanumeric and contain 3 - 16 characters"
         />
+        <p>{displayTypeHints("userName")}</p>
         <Input
           labelname="Email"
           id="email"
@@ -48,8 +78,8 @@ const SignUpForm = (props) => {
           placeholder="Email"
           value={email}
           onChange={handleInputs}
-          typehint="Email must be a valid address, e.g. example@example.com"
         />
+        <p>{displayTypeHints("email")}</p>
         <Input
           labelname="Password"
           type="password"
@@ -57,9 +87,8 @@ const SignUpForm = (props) => {
           placeholder="password"
           value={password}
           onChange={handleInputs}
-          typehint="Password must be alphanumeric (@, _ and - are also allowed) and
-            between 6 - 20 characters"
         />
+        <p>{displayTypeHints("password")}</p>
         <Input
           labelname="Phone"
           type="tel"
@@ -67,8 +96,8 @@ const SignUpForm = (props) => {
           placeholder="telephone"
           value={phone}
           onChange={handleInputs}
-          typehint="A valid Telephone number (11 digits)"
         />
+        <p>{displayTypeHints("phone")}</p>
         <button>Submit</button>
       </form>
     </div>

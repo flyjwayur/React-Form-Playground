@@ -34,3 +34,11 @@
   background-color : #ccc;
   border-radius : 5px;
 }
+
+.valid{
+  outline : 2px solid green;
+}
+
+.invalid{
+  outline : 2px solid red;
+}
