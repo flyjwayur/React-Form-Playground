@@ -2,14 +2,10 @@ import React from "react";
 import Input from "../Input/Input";
 
 const SignUpForm = props => {
+
   let {
+    userInfo,
     regexValid,
-    firstName,
-    lastName,
-    userName,
-    email,
-    password,
-    phone,
     handleInputs,
     handleSubmit,
     handleFocus,
@@ -37,13 +33,13 @@ const SignUpForm = props => {
     /* button disable=false make button clickable
        when all inputs are valid submit button will be able to click */
     return !(
-        regexValid["firstName"] &&
-        regexValid["lastName"] &&
-        regexValid["userName"] &&
-        regexValid["email"] &&
-        regexValid["password"] &&
-        regexValid["phone"]
-      )
+      regexValid["firstName"] &&
+      regexValid["lastName"] &&
+      regexValid["userName"] &&
+      regexValid["email"] &&
+      regexValid["password"] &&
+      regexValid["phone"]
+    );
   };
 
   return (
@@ -53,41 +49,37 @@ const SignUpForm = props => {
         <Input
           inputelement={inputFocus}
           labelname="First Name"
-          id="firstname"
           type="text"
           name="firstName"
           placeholder="First name"
-          value={firstName}
+          value={userInfo.firstName}
           onChange={handleInputs}
         />
         <p>{displayTypeHints("firstName")}</p>
         <Input
           labelname="Last Name"
-          id="lastname"
           type="text"
           name="lastName"
           placeholder="Last name"
-          value={lastName}
+          value={userInfo.lastName}
           onChange={handleInputs}
         />
         <p>{displayTypeHints("lastName")}</p>
         <Input
           labelname="User Name"
-          id="username"
           type="text"
           name="userName"
           placeholder="User name"
-          value={userName}
+          value={userInfo.userName}
           onChange={handleInputs}
         />
         <p>{displayTypeHints("userName")}</p>
         <Input
           labelname="Email"
-          id="email"
           type="text"
           name="email"
           placeholder="Email"
-          value={email}
+          value={userInfo.email}
           onChange={handleInputs}
         />
         <p>{displayTypeHints("email")}</p>
@@ -96,7 +88,7 @@ const SignUpForm = props => {
           type="password"
           name="password"
           placeholder="password"
-          value={password}
+          value={userInfo.password}
           onChange={handleInputs}
         />
         <p>{displayTypeHints("password")}</p>
@@ -105,7 +97,7 @@ const SignUpForm = props => {
           type="tel"
           name="phone"
           placeholder="telephone"
-          value={phone}
+          value={userInfo.phone}
           onChange={handleInputs}
         />
         <p>{displayTypeHints("phone")}</p>
