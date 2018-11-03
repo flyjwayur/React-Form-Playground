@@ -23,7 +23,7 @@ const SignUpForm = props => {
     email: "Email must be a valid address, e.g. example@example.com",
     password:
       "Password must be alphanumeric (@, _ and - are also allowed) and between 6 - 20 characters",
-    phone: "A valid Telephone number (11 digits)"
+    phone: "A valid Telephone number (10 digits)"
   };
 
   const displayTypeHints = inputType => {
@@ -33,7 +33,18 @@ const SignUpForm = props => {
     return null;
   };
 
-  displayTypeHints();
+  const ableSubmitButton = () => {
+    /* button disable=false make button clickable
+       when all inputs are valid submit button will be able to click */
+    return !(
+        regexValid["firstName"] &&
+        regexValid["lastName"] &&
+        regexValid["userName"] &&
+        regexValid["email"] &&
+        regexValid["password"] &&
+        regexValid["phone"]
+      )
+  };
 
   return (
     <div className="FormFieldwrapper">
@@ -98,7 +109,9 @@ const SignUpForm = props => {
           onChange={handleInputs}
         />
         <p>{displayTypeHints("phone")}</p>
-        <button>Submit</button>
+        <button type="submit" disabled={ableSubmitButton()}>
+          Submit
+        </button>
       </form>
     </div>
   );

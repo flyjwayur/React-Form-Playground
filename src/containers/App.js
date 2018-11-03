@@ -23,7 +23,7 @@ class App extends Component {
       phone: ""
     },
     regexValid: {
-      fistName: null,
+      fisrtName: null,
       lastName: null,
       userName: null,
       email: null,
