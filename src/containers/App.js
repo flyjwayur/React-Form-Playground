@@ -15,6 +15,7 @@ const patterns = {
 
 class App extends Component {
   state = {
+    todos:[],
     userInfo: {
       firstName: "",
       lastName: "",
@@ -55,13 +56,25 @@ class App extends Component {
     console.log ({ "lala":e.target.name, "baba":e.target.value
   });
     console.log (this.state.userInfo);
+    let name;
+    name = e.target.name
+    let value = e.target.value;
+    const todos = this.state.todos.slice();
+    todos.push('one item');
     this.setState({
-      userInfo: {
-        ...this.state.userInfo,
-        [e.target.name]: e.target.value
+      todos
+    })
+
+    
+   
+    console.log(value)
+    
+    const userInfo = Object.assign({},this.state.userInfo, {[name] : value})
+    this.setState({
+      userInfo
       }
-    }
     );
+
     if (this.checkRegexValid(e.target, patterns)) {
       this.setState({
         regexValid: {
